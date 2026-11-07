@@ -1,0 +1,42 @@
+/* Infographic templates, drawn on the board. Chalk on slate, no gradients, glow or pills. */
+.line-visual { margin: 0 0 var(--space-6); font-family: var(--font-sans); font-size: var(--text-body); line-height: var(--leading-body); }
+.vis-title { margin: 0 0 var(--space-3); font-size: var(--text-body); font-weight: var(--font-semibold); color: var(--chalk); }
+.vis { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.vis-item[data-state="hidden"], .vis-row[data-state="hidden"] { visibility: hidden; }
+.vis-step { display: block; margin-bottom: var(--space-1); font-size: var(--text-meta); line-height: var(--leading-meta); color: var(--chalk-dim); }
+
+/* flow: numbered cards, tap one to read more */
+.vis-card {
+  display: block; width: 100%; min-height: var(--hit); padding: var(--space-3) var(--space-4); text-align: left;
+  background: transparent; color: var(--chalk); border: 1px solid var(--chalk-dim); border-radius: var(--radius);
+}
+button.vis-card { cursor: pointer; }
+button.vis-card:hover { background: var(--board-edge); }
+button.vis-card[aria-expanded="true"] { border-color: var(--chalk); }
+.vis-label { font-size: 1.125rem; font-weight: var(--font-medium); overflow-wrap: anywhere; }
+.vis-detail { margin: var(--space-2) 0 0; padding-left: var(--space-1); color: var(--chalk-dim); font-size: var(--text-secondary); max-width: 60ch; }
+.vis-item[data-active="true"] .vis-card { border-color: var(--chalk-note); outline: 2px solid var(--chalk-note); outline-offset: 0; }
+
+/* timeline: a rule down the left, dates in bold */
+.vis-timeline { gap: 0; border-left: 2px solid var(--chalk-dim); margin-left: var(--space-2); }
+.vis-timeline .vis-item { display: grid; gap: var(--space-1); padding: 0 0 var(--space-4) var(--space-4); }
+.vis-timeline .vis-item:last-child { padding-bottom: 0; }
+.vis-when { font-size: 1.125rem; font-weight: var(--font-semibold); color: var(--chalk); }
+.vis-event { color: var(--chalk-dim); overflow-wrap: anywhere; max-width: 60ch; }
+.vis-timeline .vis-item[data-active="true"] .vis-when { color: var(--chalk-note); }
+
+/* compare: a real table */
+.vis-compare { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.vis-compare th, .vis-compare td { padding: var(--space-3) var(--space-2); text-align: left; vertical-align: top; overflow-wrap: anywhere; border-bottom: 1px solid var(--chalk-dim); }
+.vis-compare thead th { font-weight: var(--font-semibold); color: var(--chalk); }
+.vis-compare thead td { border-bottom-color: var(--chalk-dim); }
+.vis-compare tbody th { width: 28%; font-weight: var(--font-medium); color: var(--chalk-dim); }
+.vis-compare td { color: var(--chalk); }
+.vis-row[data-active="true"] td, .vis-row[data-active="true"] th { color: var(--chalk-note); }
+
+@media (min-width: 768px) {
+  .vis-flow { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); }
+  .vis-label, .vis-when { font-size: 1.25rem; }
+  .vis-detail, .vis-event { font-size: var(--text-body); }
+  .vis-compare th, .vis-compare td { padding: var(--space-4); font-size: 1.125rem; }
+}
